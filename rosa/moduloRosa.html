@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
     <meta charset="UTF-8" />
     <title>Módulo rosa</title>
     <style>
+        /* Reset y estilos base */
         html,
         body {
             margin: 0;
@@ -14,6 +14,7 @@
             height: 1080px;
         }
 
+        /* Contenedor principal */
         .contenedor-totem {
             width: 100%;
             height: 100%;
@@ -26,42 +27,64 @@
             padding: 20px;
         }
 
+        /* Sección izquierda */
         .left {
             width: 65%;
             box-sizing: border-box;
-            margin: 0 75px 0 75px;
+            margin: 0 75px;
         }
 
+        /* Sección derecha */
         .right {
             width: 35%;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             box-sizing: border-box;
         }
 
+        /* Tipografía */
         h1 {
             font-size: 48px;
-            /* Reducido de 60px */
-            margin-top: 40px;
-            /* Reducido de 81px */
-            margin-bottom: 20px;
-            /* Reducido de 40px */
+            margin: 40px 0 20px;
         }
 
+        h2 {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0;
+        }
 
+        /* Componentes reutilizables */
         .card {
             border: 2px solid white;
             border-radius: 20px;
+            overflow: hidden;
         }
 
-        .contenedor-card{
+        .contenedor-card {
             width: 1100px;
         }
 
+        .titulo {
+            color: #AE45BA;
+            background-color: white;
+            padding: 20px 30px;
+            text-align: justify;
+        }
+
+        /* Sección de actividades */
+        .actividades {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid white;
+            margin-bottom: 15px;
+            margin-top: 40px;
+        }
 
         .contenido {
-            padding: 40px 0 40px 0;
+            padding: 40px 0;
             display: flex;
             gap: 40px;
             color: white;
@@ -69,41 +92,12 @@
             justify-content: center;
         }
 
-        .titulo {
-            color: #AE45BA;
-            background-color: white;
-            padding: 12px 20px;
-            /* Reducido vertical de 20px */
-            font-size: 25px;
-            /* Reducido de 30px */
-            font-weight: bold;
-            text-align: justify;
-        }
-
-        .actividades {
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid white;
-            height: auto;
-            /* Altura específica solicitada */
-            margin-bottom: 15px;
-            /* Reducido de 20px */
-        }
-
-
-        .card1, .card2{
-            
+        /* Cards principales */
+        .card1,
+        .card2 {
             width: 480px;
             height: 270px;
             border: 1px solid;
-            
-        }
-
-        .card1 {
-            display: flex;
-        }
-
-        .card2 {
             display: flex;
         }
 
@@ -113,13 +107,14 @@
         }
 
         .derecha {
-    width: 50%;
-    margin: 30px 30px 0px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+            width: 50%;
+            margin: 30px 30px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
+        /* Elementos comunes */
         .flecha {
             height: 30px;
         }
@@ -134,24 +129,32 @@
             font-size: 25px;
         }
 
+        /* QR */
         .qr {
             width: 175px;
             height: 175px;
         }
 
-        .contenedor-qr {
+        .qr-eventos {
+            width: 180px;
+            height: 180px;
+        }
+
+        .contenedor-qr,
+        .contenedor-qr-events {
             background: white;
             color: #000;
-            padding: 8px 10px 10px 10px;
+            padding: 8px 10px 10px;
         }
 
         .contenedor-qr h2 {
-            margin-bottom: 0;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 0;
         }
 
+        /* Enlaces */
         .link-externo {
             margin-top: 30px;
             display: block;
@@ -160,18 +163,97 @@
             padding: 10px;
         }
 
-        .event-derecha {
-            display: flex;
+        .link-externo-event {
+            margin-top: auto;
+            /* Esto empuja el enlace hacia abajo */
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            padding: 10px;
         }
 
-        .event-derecha h2 {
-            font-size: 20px;
+        /* Sección de eventos */
+        .eventos{
+            margin-top: 40px;
+        }
+        .contenido-evento {
+            display: flex;
+            gap: 40px;
+            color: white;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 0 0;
+            height: 100%;
+        }
+
+        .event-izquierda {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            justify-content: space-between;
+            margin-top: 0;
+        }
+
+        .event-izquierda p {
+            display: flex;
+            /* ← ELIMINAR */
+            flex-direction: column;
+            /* ← ELIMINAR */
+            height: 100%;
+            /* ← ELIMINAR */
+            justify-content: space-between;
+            /* ← ELIMINAR */
+            align-self: flex-start;
+            /* ← ELIMINAR */
+            margin-top: 0;
+            /* ← ELIMINAR */
+        }
+
+        .event-izquierda a {
+            margin-bottom: 35px;
+        }
+
+        .event-derecha {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 500px;
+            height: 100%;
+        }
+
+        .texto-derecha {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+
+
+        /* Textos en sección derecha */
+        .right{
+            text-align: center;
+            line-height: 1.2;
+            font-size: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .parrafo {
+            font-style: italic;
+        }
+
+        .parrafo-2{
+            font-weight: bold;
+
+        }
+
+        .parrafo span {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-
     <div class="contenedor-totem">
         <div class="left">
             <h1>Calendario Académico</h1>
@@ -221,25 +303,26 @@
                     <div class="titulo">
                         <h2>Eventos Facultad y Universidad</h2>
                     </div>
-                    <div class="contenido">
+                    <div class="contenido-evento">
                         <div class="event-izquierda">
                             <p>Información en web AGENDA UC</p>
-                            <a href="#" class="link-externo">Ir a sitio</a>
+                            <a href="#" class="link-externo-event">Ir a sitio</a>
                         </div>
                         <div class="event-derecha">
-                            <h2>ESCANÉAME!</h2>
-                            <img src="./img/FLECHA 3.svg" alt="flecha" class="flecha">
+                            <div class="texto-derecha">
+                                <h2>ESCANÉAME!</h2>
+                                <img src="./img/FLECHA 3.svg" alt="flecha" class="flecha">
+                            </div>
                             <div class="contenedor-qr-events">
-                                <img src="./img/QR3.svg" alt="Eventos" class="qr">
+                                <img src="./img/QR3.svg" alt="Eventos" class="qr-eventos">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="right">
-            <div class="parrafo parrafo1">
+            <div class="parrafo parrafo-1">
                 <p>"Escanea los<br>
                     códigos QR y obtén<br>
                     en tu celular<br>
@@ -249,7 +332,7 @@
                     Académicas y<br>
                     Estudiantiles"</p>
             </div>
-            <div class="parrafo parrafo2">
+            <div class="parrafo parrafo-2">
                 <p>"Revisa también<br>
                     los eventos de la<br>
                     Facultad y<br>
